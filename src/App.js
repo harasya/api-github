@@ -11,7 +11,7 @@ function NoMatch() {
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Switch>
         <Route path='/' exact component={Landing} />
 
