@@ -1,24 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
+import Landing from './views/Landing';
+import User from './views/User';
+import Repos from './views/Repos';
+
+function NoMatch() {
+  return <h2>Halaman Tidak di temukan</h2>;
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route path='/' exact component={Landing} />
+
+        <Route path='/user/:username' exact component={User} />
+        <Route path='/user/:username/repos' exact component={Repos} />
+        <Route component={NoMatch} />
+      </Switch>
+    </BrowserRouter>
   );
 }
 
